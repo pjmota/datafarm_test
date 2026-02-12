@@ -23,10 +23,11 @@ export class ApplicationInterceptor implements HttpInterceptor {
             headers = headers.set('code', this.authService.code);
         }
 
-        if (request.body instanceof FormData) {
-            headers.set('Content-Type', 'multipart/form-data');
-        } else {
-            headers.set('Content-Type', 'application/json');
+        // Angular handles Content-Type for FormData automatically (including boundary).
+        // Only explicitly set application/json for non-FormData requests if needed, 
+        // but typically Angular handles this too. However, to fix the original intent:
+        if (!(request.body instanceof FormData)) {
+             headers = headers.set('Content-Type', 'application/json');
         }
 
         const requestClone = request.clone({headers})

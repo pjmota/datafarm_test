@@ -20,6 +20,7 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ApplicationInterceptor} from "./core/application/interceptor/application.interceptor";
 import { SubmissionComponent } from './main/submission/submission.component';
+import { DialogFeatureComponent } from './main/dialogs/dialog-feature/dialog-feature.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +31,7 @@ import { SubmissionComponent } from './main/submission/submission.component';
         HeaderComponent,
         DialogAuthComponent,
         SubmissionComponent,
+        DialogFeatureComponent,
     ],
     imports: [
         BrowserModule,

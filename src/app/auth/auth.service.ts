@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {environment} from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -17,8 +18,17 @@ export class AuthService {
             throw 'code not set'
         }
         this._code = code;
+        localStorage.setItem('auth_code', code);
     }
 
     constructor() {
+        if (environment.authCode) {
+            this._code = environment.authCode;
+        } else {
+            const storedCode = localStorage.getItem('auth_code');
+            if (storedCode) {
+                this._code = storedCode;
+            }
+        }
     }
 }

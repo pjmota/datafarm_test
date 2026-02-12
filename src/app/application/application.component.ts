@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DialogAuthService} from "../main/dialogs/dialog-auth/services/dialog-auth.service";
+import {AuthService} from "@auth/auth.service";
 
 @Component({
     selector: 'app-application',
@@ -7,9 +8,14 @@ import {DialogAuthService} from "../main/dialogs/dialog-auth/services/dialog-aut
     styleUrls: ['./application.component.scss']
 })
 export class ApplicationComponent implements OnInit{
-    constructor(private dialogAuthService: DialogAuthService) {}
+    constructor(
+        private dialogAuthService: DialogAuthService,
+        private authService: AuthService
+    ) {}
 
     ngOnInit() {
-        this.dialogAuthService.open();
+        if (!this.authService.code) {
+            this.dialogAuthService.open();
+        }
     }
 }

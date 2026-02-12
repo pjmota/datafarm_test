@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Informações do Talhão</h2>
+<mat-dialog-content>
+  <div *ngIf="isLoading">
+    <p>Carregando informações...</p>
+  </div>
+  
+  <div *ngIf="!isLoading && fieldDetail">
+    <p><strong>Produtor:</strong> {{ fieldDetail.grower }}</p>
+    <p><strong>Fazenda:</strong> {{ fieldDetail.farm }}</p>
+    <p><strong>Talhão:</strong> {{ fieldDetail.field }}</p>
+  </div>
+
+  <div *ngIf="coordinatesString" style="margin-top: 15px;">
+    <p><strong>Coordenadas (GeoJSON):</strong></p>
+    <textarea readonly style="width: 100%; height: 100px; resize: vertical;">{{ coordinatesString }}</textarea>
+  </div>
+
+  <div *ngIf="!isLoading && !fieldDetail">
+    <p>Não foi possível carregar os detalhes do talhão.</p>
+    <p><strong>ID:</strong> {{ data?.properties?.idField }}</p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Fechar</button>
+</mat-dialog-actions>
