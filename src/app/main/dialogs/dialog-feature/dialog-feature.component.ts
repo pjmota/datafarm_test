@@ -1,11 +1,15 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { FieldDetail, FieldService } from '../../services/field.service';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-dialog-feature',
   templateUrl: './dialog-feature.component.html',
-  styleUrls: ['./dialog-feature.component.scss']
+  styleUrls: ['./dialog-feature.component.scss'],
+  standalone: true,
+  imports: [CommonModule, MatDialogModule, MatButtonModule]
 })
 export class DialogFeatureComponent implements OnInit {
 

@@ -1,11 +1,16 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from "@angular/forms";
+import {FormControl, Validators, ReactiveFormsModule} from "@angular/forms";
 import {SubmissionService} from "./submission.service";
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-submission',
     templateUrl: './submission.component.html',
-    styleUrls: ['./submission.component.scss']
+    styleUrls: ['./submission.component.scss'],
+    standalone: true,
+    imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatButtonModule]
 })
 export class SubmissionComponent {
 

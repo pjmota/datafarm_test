@@ -1,11 +1,14 @@
 import {Component} from '@angular/core';
 import {latLng, tileLayer} from "leaflet";
 import {MapService} from "./map.service";
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 
 @Component({
     selector: 'app-map',
     templateUrl: './map.component.html',
-    styleUrls: ['./map.component.scss']
+    styleUrls: ['./map.component.scss'],
+    standalone: true,
+    imports: [LeafletModule]
 })
 export class MapComponent {
     options = {
